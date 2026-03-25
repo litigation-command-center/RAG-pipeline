@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Curator | Case Knowledge Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed-variant": "#004495",
+                        "surface-dim": "#0b1326",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary-fixed-variant": "#314863",
+                        "on-tertiary": "#1d2e5c",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#001a42",
+                        "on-surface": "#dae2fd",
+                        "inverse-primary": "#005ac2",
+                        "surface": "#0b1326",
+                        "primary": "#adc6ff",
+                        "on-secondary-fixed": "#011d35",
+                        "on-secondary-container": "#9fb7d6",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#dbe1ff",
+                        "secondary": "#b0c9e8",
+                        "surface-container-high": "#222a3d",
+                        "on-primary-container": "#5c96ff",
+                        "on-surface-variant": "#c6c5d4",
+                        "on-tertiary-container": "#8696cb",
+                        "on-tertiary-fixed": "#041846",
+                        "surface-tint": "#adc6ff",
+                        "outline-variant": "#454652",
+                        "primary-fixed": "#d8e2ff",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#19324b",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed-dim": "#adc6ff",
+                        "background": "#0b1326",
+                        "secondary-container": "#314863",
+                        "primary-container": "#002e69",
+                        "outline": "#908f9d",
+                        "tertiary": "#b5c5fc",
+                        "secondary-fixed": "#d1e4ff",
+                        "tertiary-container": "#1d2e5b",
+                        "tertiary-fixed-dim": "#b5c5fc",
+                        "on-tertiary-fixed-variant": "#354574",
+                        "on-primary": "#002e6a",
+                        "secondary-fixed-dim": "#b0c9e8",
+                        "surface-variant": "#2d3449"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .tonal-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #5c96ff 100%);
+        }
+        .sidebar-active {
+            color: #adc6ff;
+            background-color: #171f33;
+            border-radius: 0 9999px 9999px 0;
+            font-weight: 700;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(173, 198, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full h-16 bg-[#0b1326] flex justify-between items-center px-6 border-b border-slate-800/20">
+<div class="flex items-center gap-8">
+<h1 class="text-lg font-bold text-[#adc6ff] tracking-tighter font-headline">The Unified Workspace</h1>
+<div class="relative hidden md:block w-96">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+</div>
+<input class="w-full bg-[#171f33] border-none rounded-lg py-2 pl-10 pr-4 text-sm font-manrope text-on-surface focus:ring-2 focus:ring-primary/30 placeholder:text-slate-500 transition-all" placeholder="Search case intelligence..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-[#2d3449] transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-[#2d3449] transition-colors rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-sm">person</span>
+</div>
+</div>
+</header>
+<div class="flex pt-16 h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full w-64 py-8 bg-[#0b1326] border-r border-slate-800/20 shrink-0">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg tonal-gradient flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div>
+<div class="text-[#adc6ff] font-black font-headline leading-tight">The Curator</div>
+<div class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Legal Intelligence</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 pr-4">
+<a class="sidebar-active flex items-center gap-4 py-3 px-6 transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="font-manrope text-xs font-medium uppercase tracking-wider">Case Hub</span>
+</a>
+<a class="text-slate-500 flex items-center gap-4 py-3 px-6 hover:text-white hover:bg-[#2d3449] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-manrope text-xs font-medium uppercase tracking-wider">Chronology</span>
+</a>
+<a class="text-slate-500 flex items-center gap-4 py-3 px-6 hover:text-white hover:bg-[#2d3449] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-manrope text-xs font-medium uppercase tracking-wider">Exhibits</span>
+</a>
+<a class="text-slate-500 flex items-center gap-4 py-3 px-6 hover:text-white hover:bg-[#2d3449] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-manrope text-xs font-medium uppercase tracking-wider">Bob Analysis</span>
+</a>
+</div>
+<div class="mt-8 px-6">
+<button class="w-full tonal-gradient text-on-primary-fixed py-3 rounded-lg font-bold text-xs uppercase tracking-widest shadow-lg shadow-primary/10 hover:brightness-110 transition-all">
+                    New Case
+                </button>
+</div>
+<div class="mt-auto flex flex-col gap-1 pr-4">
+<a class="text-slate-500 flex items-center gap-4 py-3 px-6 hover:text-white hover:bg-[#2d3449] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-manrope text-xs font-medium">Help</span>
+</a>
+<a class="text-slate-500 flex items-center gap-4 py-3 px-6 hover:text-white hover:bg-[#2d3449] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-manrope text-xs font-medium">Archive</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface p-8 custom-scrollbar">
+<header class="mb-10 max-w-5xl">
+<div class="flex items-center gap-2 text-slate-500 mb-2">
+<span class="material-symbols-outlined text-sm">hub</span>
+<span class="text-xs font-bold uppercase tracking-[0.2em]">Nerve Center</span>
+</div>
+<h2 class="text-5xl font-extrabold text-on-surface font-headline tracking-tighter mb-4 opacity-30">No Active Case Selected</h2>
+<p class="text-slate-500 max-w-2xl leading-relaxed">Select a case from the Case Hub or create a new one to begin intelligence synthesis. System state: <span class="text-slate-400 font-semibold italic">Standing By</span>.</p>
+</header>
+<div class="grid grid-cols-12 gap-6 max-w-7xl opacity-50">
+<!-- Alignment Score (Asymmetric Hero) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container rounded-xl p-8 flex flex-col justify-between border border-outline-variant/5">
+<div>
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">System Alignment</h3>
+<div class="relative w-40 h-40 mx-auto">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-slate-600" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="440" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-black text-slate-600 font-headline tracking-tighter">0%</span>
+<span class="text-[10px] text-slate-500 font-bold tracking-widest uppercase">Idle</span>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<p class="text-sm text-slate-500 leading-relaxed italic text-center">"Ingest documents to begin theory alignment analysis."</p>
+</div>
+</div>
+<!-- Strategic Pivots (AI Spotlight) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container rounded-xl p-1 overflow-hidden relative group">
+<div class="bg-surface-container-high h-full p-8 rounded-[11px] flex flex-col justify-center relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-slate-500/5 rounded-full blur-[80px]"></div>
+<h3 class="text-2xl font-bold font-headline text-slate-500 mb-4 max-w-md">Ready for Data Ingest</h3>
+<p class="text-slate-400 mb-6 max-w-lg leading-relaxed">
+                            The intelligence engine is awaiting evidentiary material. Upload depositions, forensic logs, or correspondence to generate strategic insights.
+                        </p>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest px-6 py-2.5 rounded-lg text-slate-400 text-sm font-bold border border-outline-variant/20 cursor-not-allowed">Awaiting Data</button>
+</div>
+</div>
+</div>
+<!-- Bento: Key Facts & Evidence -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container p-6 rounded-xl border border-outline-variant/5">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Case Narrative</h3>
+<span class="material-symbols-outlined text-slate-600 text-sm">auto_stories</span>
+</div>
+<div class="flex flex-col items-center justify-center py-10 text-center">
+<span class="material-symbols-outlined text-3xl text-slate-700 mb-3">pending_actions</span>
+<p class="text-xs text-slate-500 uppercase tracking-widest">Empty Workspace</p>
+</div>
+</div>
+<!-- Bento: Major Evidentiary Highlights -->
+<div class="col-span-12 md:col-span-6 lg:col-span-5 bg-surface-container p-6 rounded-xl border border-outline-variant/5 flex flex-col gap-4">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Evidence Ledger</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg border border-dashed border-outline-variant/20 flex flex-col items-center justify-center h-20">
+<span class="text-[10px] text-slate-600 font-bold uppercase tracking-tighter">No Files Indexed</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-dashed border-outline-variant/20 flex flex-col items-center justify-center h-20">
+<span class="text-[10px] text-slate-600 font-bold uppercase tracking-tighter">No Files Indexed</span>
+</div>
+</div>
+</div>
+<!-- Bento: Mini Insight -->
+<div class="col-span-12 lg:col-span-3 bg-surface-container-high p-6 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<div class="w-8 h-8 rounded-full bg-slate-500/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-slate-500" style="font-variation-settings: 'FILL' 0;">lightbulb</span>
+</div>
+<h4 class="text-slate-400 font-bold font-headline leading-tight italic">Protocol Active</h4>
+<p class="text-xs text-slate-500 mt-2">Standing by for active monitoring of case developments and opposing counsel filings.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- NavigationDrawer (Right-Contextual AI 'Bob') -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-64px)] w-80 bg-[#171f33]/90 backdrop-blur-xl p-6 flex flex-col gap-4 shadow-[-24px_0_48px_-12px_rgba(0,0,0,0.45)] border-l border-white/5">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-500/10 border border-slate-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<div class="text-on-surface font-bold font-headline leading-tight">Bob</div>
+<div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Digital Partner</div>
+</div>
+</div>
+<button class="text-slate-500 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex border-b border-slate-800">
+<button class="flex-1 pb-3 text-[#adc6ff] font-bold border-b border-[#adc6ff] text-xs uppercase tracking-widest">Intelligence</button>
+<button class="flex-1 pb-3 text-slate-500 hover:text-slate-200 text-xs uppercase tracking-widest">Logs</button>
+</div>
+<div class="flex-1 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<!-- Bob Greeting -->
+<div class="glass-panel p-4 rounded-xl border border-white/5">
+<p class="text-sm font-inter text-on-surface leading-relaxed">
+                        System initialized. I am ready to analyze your case files. Please upload relevant discovery or draft a case theory to begin our collaboration.
+                    </p>
+</div>
+<!-- System Tip -->
+<div class="bg-surface-container-high/40 p-4 rounded-xl border border-white/5">
+<div class="flex items-center gap-2 mb-2 text-slate-400">
+<span class="material-symbols-outlined text-sm">info</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Protocol Tip</span>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed italic">You can use 'New Case' to start a fresh workspace for intelligence synthesis.</p>
+</div>
+</div>
+<!-- Bob Chat Input -->
+<div class="mt-auto relative">
+<textarea class="w-full glass-panel border border-white/10 rounded-xl p-4 text-sm font-inter text-on-surface focus:ring-1 focus:ring-primary focus:border-primary placeholder:text-slate-600 resize-none" placeholder="Enter instructions or query..." rows="3"></textarea>
+<button class="absolute bottom-3 right-3 w-8 h-8 rounded-lg bg-slate-700 flex items-center justify-center text-slate-400 shadow-lg hover:bg-slate-600 transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</aside>
+</div>
+</body></html>
