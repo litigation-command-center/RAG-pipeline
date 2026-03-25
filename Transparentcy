@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Surgical Transparency | Pure Protocol Shell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Public+Sans:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#45464d",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#d5e3fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#57657b",
+                        "primary-fixed": "#dae2fd",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed": "#d7e2ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "secondary": "#515f74",
+                        "primary": "#000000",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "primary-container": "#131b2e",
+                        "tertiary-container": "#001b3f",
+                        "on-primary-fixed": "#131b2e",
+                        "outline": "#76777d",
+                        "on-primary-container": "#7c839b",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-container": "#1081ff",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004590",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-tertiary-fixed": "#001b3f",
+                        "tertiary": "#000000",
+                        "tertiary-fixed-dim": "#abc7ff",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Public Sans", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Public Sans', sans-serif; }
+        .font-newsreader { font-family: 'Newsreader', serif; }
+        .font-public-sans { font-family: 'Public Sans', sans-serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .surgical-citation {
+            color: #1081ff;
+            border-bottom: 0.5px solid #1081ff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-100 dark:bg-slate-950 flex flex-col border-r border-slate-200 dark:border-slate-800 z-50">
+<div class="p-6">
+<h1 class="font-newsreader font-bold text-slate-900 dark:text-slate-50 text-xl">Forensic Ledger</h1>
+<p class="font-public-sans text-xs tracking-tight text-slate-500">System Ready - No Active File</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 font-semibold ring-1 ring-slate-200 dark:ring-slate-800 cursor-pointer active:opacity-80 transition-transform duration-200 hover:translate-x-1">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-public-sans text-sm tracking-tight">Dynamic Chronology</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer active:opacity-80 transition-transform duration-200 hover:translate-x-1">
+<span class="material-symbols-outlined" data-icon="folder_managed">folder_managed</span>
+<span class="font-public-sans text-sm tracking-tight">Case Hub</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer active:opacity-80 transition-transform duration-200 hover:translate-x-1">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-public-sans text-sm tracking-tight">Exhibit Manager</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer active:opacity-80 transition-transform duration-200 hover:translate-x-1">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-public-sans text-sm tracking-tight">AI Agent Orchestrator</span>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-surface-container-low space-y-4">
+<div class="flex items-center gap-3 text-on-tertiary-container">
+<span class="material-symbols-outlined" data-icon="cloud_sync" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+<span class="font-label text-xs font-medium uppercase tracking-widest">Protocol Monitor: Standby</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 font-label text-xs font-bold uppercase tracking-tighter hover:bg-primary-container transition-colors">
+                Ingest New Protocol
+            </button>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-slate-50 dark:bg-slate-900 flex justify-between items-center px-6 border-b border-slate-200 dark:border-slate-800 z-40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-slate-900 dark:text-slate-100 uppercase tracking-tighter">Surgical Transparency</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-700 font-newsreader text-lg font-bold" href="#">Verified Sources</a>
+<a class="text-blue-600 dark:text-blue-400 font-bold border-b-2 border-blue-600 font-newsreader text-lg font-bold" href="#">Agent Output</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="bg-primary text-on-primary px-3 py-1 text-[10px] font-bold tracking-widest uppercase">
+                Zero-Hallucination Shell
+            </div>
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined cursor-pointer" data-icon="account_balance">account_balance</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="settings">settings</span>
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-outline" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 mr-80 p-12 max-w-5xl mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-16">
+<h2 class="font-newsreader font-bold text-[3.5rem] leading-none mb-4 text-outline/20">Protocol Ledger: [Untitled Case]</h2>
+<div class="flex items-center gap-4 text-on-surface-variant font-label text-[0.75rem] uppercase tracking-widest">
+<span>Jurisdiction Pending</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>Last Sync: -- --- ---- --:-- GMT</span>
+</div>
+</section>
+<!-- Search Bar -->
+<div class="mb-12 flex gap-4 bg-surface-container-low p-2">
+<div class="flex-1 flex items-center bg-surface-container-lowest px-4 py-2 ring-1 ring-inset ring-outline-variant/20">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body text-sm placeholder:text-outline/50" placeholder="Search Ingested Protocols..." type="text"/>
+</div>
+<button class="bg-outline-variant text-on-surface-variant px-8 font-label text-xs font-bold uppercase tracking-widest cursor-not-allowed">
+                Filter Empty
+            </button>
+</div>
+<!-- Timeline Container -->
+<div class="grid grid-cols-12 gap-0 border-l border-surface-container-highest">
+<!-- Column Headers -->
+<div class="col-span-12 grid grid-cols-12 mb-8 sticky top-16 bg-surface py-4 z-10">
+<div class="col-span-1 border-r border-transparent"></div>
+<div class="col-span-5 px-6 font-newsreader font-bold text-lg text-on-surface">Sequence Data</div>
+<div class="col-span-6 px-6 font-newsreader font-bold text-lg text-on-surface border-l border-surface-container-highest">Legal Assessment</div>
+</div>
+<!-- Empty State 1 -->
+<div class="col-span-12 grid grid-cols-12 group py-8 border-b border-surface-container opacity-40">
+<div class="col-span-1 flex flex-col items-center pt-2">
+<div class="w-3 h-3 bg-outline-variant -ml-px"></div>
+<span class="font-inter font-bold text-[10px] uppercase tracking-tighter mt-4 rotate-90 origin-left whitespace-nowrap">-- --- --</span>
+</div>
+<div class="col-span-5 px-6 space-y-4">
+<p class="font-body text-base text-outline leading-relaxed italic">
+                        Waiting for factual data ingest...
+                    </p>
+</div>
+<div class="col-span-6 px-6 border-l border-surface-container-highest space-y-4">
+<p class="font-body text-base text-outline p-4 border-l-4 border-outline-variant bg-surface-container-low">
+                        Protocol analysis pending input.
+                    </p>
+</div>
+</div>
+<!-- Empty State 2 -->
+<div class="col-span-12 grid grid-cols-12 group py-8 border-b border-surface-container opacity-40">
+<div class="col-span-1 flex flex-col items-center pt-2">
+<div class="w-3 h-3 bg-outline-variant -ml-px"></div>
+<span class="font-inter font-bold text-[10px] uppercase tracking-tighter mt-4 rotate-90 origin-left whitespace-nowrap">-- --- --</span>
+</div>
+<div class="col-span-5 px-6 space-y-4">
+<p class="font-body text-base text-outline leading-relaxed italic">
+                        No sources linked to this record.
+                    </p>
+</div>
+<div class="col-span-6 px-6 border-l border-surface-container-highest space-y-4">
+<p class="font-body text-base text-outline p-4 border-l-4 border-outline-variant bg-surface-container-low">
+                        Verification engine in standby mode.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Pagination/Navigation -->
+<div class="mt-20 flex justify-between items-center font-label text-xs font-bold uppercase tracking-widest text-outline">
+<button class="flex items-center gap-2 cursor-not-allowed">
+<span class="material-symbols-outlined">arrow_back</span> No Earlier Records
+            </button>
+<span>Showing 00 — 00 of 000 Events</span>
+<button class="flex items-center gap-2 cursor-not-allowed">
+                No Subsequent Records <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Evidence Rail -->
+<aside class="fixed right-0 top-0 h-full w-80 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md flex flex-col p-4 border-l border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-900/5 z-50">
+<div class="mb-12">
+<h3 class="font-inter text-xs font-medium uppercase tracking-widest text-outline">Evidence Rail</h3>
+<p class="font-newsreader italic text-sm text-slate-400">Pure Protocol Shell</p>
+</div>
+<nav class="space-y-8 flex-1">
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-outline cursor-default">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="font-inter text-xs font-medium uppercase tracking-widest">Awaiting Context</span>
+</div>
+<div class="flex items-center gap-3 text-outline cursor-default">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-inter text-xs font-medium uppercase tracking-widest">No Sources Linked</span>
+</div>
+</div>
+<!-- Active Evidence Detail Empty -->
+<div class="bg-surface-container-lowest border border-dashed border-outline-variant p-8 flex flex-col items-center justify-center text-center space-y-4">
+<span class="material-symbols-outlined text-outline text-4xl" data-icon="data_info_alert">data_info_alert</span>
+<p class="font-body text-xs text-outline leading-relaxed">
+                    Select a chronology entry to display linked exhibits or ingest a new document package.
+                </p>
+</div>
+</nav>
+<div class="mt-auto pt-6 border-t border-surface-container-highest">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-2 bg-outline-variant rounded-full"></span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest text-outline">Agent Ledger Sync</span>
+</div>
+<div class="bg-surface-container p-3">
+<p class="font-body text-[10px] text-outline italic">
+                    "System idling. Waiting for protocol instructions..."
+                </p>
+</div>
+</div>
+</aside>
+</body></html>
