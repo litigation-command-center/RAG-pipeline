@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lexis Obsidian | Protocol Shell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#171f33",
+              "secondary-fixed-dim": "#b0c9e8",
+              "tertiary-fixed-dim": "#b5c5fc",
+              "surface-container-high": "#222a3d",
+              "on-surface": "#dae2fd",
+              "surface-container-low": "#131b2e",
+              "secondary-container": "#314863",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#0b1326",
+              "inverse-surface": "#dae2fd",
+              "background": "#0b1326",
+              "on-tertiary-container": "#8696cb",
+              "on-secondary": "#19324b",
+              "primary": "#adc6ff",
+              "on-secondary-fixed": "#011d35",
+              "on-error-container": "#ffdad6",
+              "surface-dim": "#0b1326",
+              "tertiary": "#b5c5fc",
+              "surface-container-highest": "#2d3449",
+              "secondary-fixed": "#d1e4ff",
+              "inverse-primary": "#005ac2",
+              "on-surface-variant": "#c6c5d4",
+              "on-primary": "#002e6a",
+              "on-primary-fixed-variant": "#004495",
+              "surface-variant": "#2d3449",
+              "on-secondary-container": "#9fb7d6",
+              "error": "#ffb4ab",
+              "on-tertiary": "#1d2e5c",
+              "outline": "#908f9d",
+              "surface-tint": "#adc6ff",
+              "outline-variant": "#454652",
+              "tertiary-container": "#1d2e5b",
+              "on-tertiary-fixed-variant": "#354574",
+              "surface-bright": "#31394d",
+              "primary-container": "#002e69",
+              "surface-container-lowest": "#060e20",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#041846",
+              "error-container": "#93000a",
+              "on-background": "#dae2fd",
+              "secondary": "#b0c9e8",
+              "tertiary-fixed": "#dbe1ff",
+              "on-secondary-fixed-variant": "#314863",
+              "primary-fixed": "#d8e2ff",
+              "inverse-on-surface": "#283044",
+              "on-primary-container": "#5c96ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(45, 52, 73, 0.4);
+        backdrop-filter: blur(16px);
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #adc6ff 0%, #5c96ff 100%);
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #0b1326; }
+      ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 10px; }
+      .protocol-text {
+        font-family: 'Courier New', Courier, monospace;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center w-full px-8 py-3 bg-[#0b1326] sticky top-0 z-50 border-b border-outline-variant/10">
+<div class="flex items-center gap-12">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff] font-headline uppercase">Lexis Obsidian</span>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-slate-400 font-medium hover:text-slate-200 transition-colors font-['Manrope'] tracking-tight text-sm" href="#">System Status</a>
+<a class="text-slate-200 font-bold border-b-2 border-primary py-1 font-['Manrope'] tracking-tight text-sm flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                Master Protocol
+            </a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-error-container/20 rounded-full border border-error/20">
+<span class="material-symbols-outlined text-error text-xs" data-icon="verified_user">verified_user</span>
+<span class="text-[10px] font-bold text-error uppercase tracking-[0.15em]">Absolute Compliance Mode</span>
+</div>
+<button class="p-2 text-slate-400 hover:bg-[#2d3449] transition-all duration-200 rounded-lg">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface text-sm" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#171f33] w-64 shadow-[24px_0_48px_-12px_rgba(0,0,0,0.45)]">
+<div class="p-6 mt-16">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-sm text-on-surface">Protocol Matrix</h3>
+<p class="text-[10px] uppercase tracking-widest text-primary/70">10 Agents Defined</p>
+</div>
+</div>
+<nav class="flex flex-col space-y-1">
+<a class="bg-[#2d3449] text-[#adc6ff] rounded-r-full py-3 px-6 border-l-4 border-[#adc6ff] flex items-center gap-3 font-['Inter'] text-xs font-semibold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+                    Surgical Transparency
+                </a>
+<a class="text-slate-500 py-3 px-6 hover:text-slate-300 transition-all flex items-center gap-3 font-['Inter'] text-xs font-semibold uppercase tracking-widest hover:bg-[#2d3449]/50" href="#">
+<span class="material-symbols-outlined" data-icon="schema">schema</span>
+                    Agent Hierarchy
+                </a>
+<a class="text-slate-500 py-3 px-6 hover:text-slate-300 transition-all flex items-center gap-3 font-['Inter'] text-xs font-semibold uppercase tracking-widest hover:bg-[#2d3449]/50" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                    Safety Mandates
+                </a>
+</nav>
+</div>
+<div class="mt-auto p-6 space-y-4">
+<div class="p-3 bg-error-container/10 border border-error/20 rounded-lg">
+<p class="text-[9px] uppercase font-black text-error/80 tracking-widest mb-1">MANDATE ALPHA</p>
+<p class="text-[10px] text-on-surface-variant font-medium">ZERO HALLUCINATION TOLERANCE</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 p-8 bg-surface-container-low">
+<header class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-headline font-extrabold tracking-tighter text-on-surface mb-2 uppercase italic">Protocol Orchestration Shell</h1>
+<p class="text-on-surface-variant max-w-2xl text-sm leading-relaxed">Pure functional orchestration under the <span class="text-primary font-bold">Zero Hallucination</span> mandate. All case-specific parameters purged.</p>
+</div>
+<div class="px-4 py-2 bg-surface-container rounded-lg flex items-center gap-3 border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-slate-500"></span>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">System Ready</span>
+</div>
+</header>
+<!-- Bento Grid of Agents (10 Agents) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+<!-- Agent: Steve -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Steve</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Coordinator Protocol: STRAT-LEAD-01</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"You are the Lead Architect. Sub-agents must provide citation-backed assertions only. Reject any output containing 'I believe' or 'likely' without statistical confidence over 98%."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Rick -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Rick</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Researcher: DATA-EXTRACT-09</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Extract raw text only. No summarization. Cross-check OCR data against original source images three times. Report any discrepancy as a fatal retrieval error."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Joy -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Joy</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Statutory Analyst: SENT-AUDIT-02</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Identify micro-hesitations in audio/transcript data. Flag specific timestamps where emotional intensity deviates from baseline profile by &gt;15%."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Craig -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Craig</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Case Law Synthesizer: GRAPH-SYNC-04</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Map relationship nodes based exclusively on verified filings. Zero inference allowed for missing links; mark as 'UNDEFINED' and flag for Researcher."</p>
+</div>
+</div>
+</div>
+<!-- Agent: John -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">John</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Audit Protocol: JURIS-HISTORY-08</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Analyze previous rulings of specific jurisdictional bodies. Cross-reference with appellate reversals. Priority: Identify any deviation from binding precedent."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Roy -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="timeline">timeline</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Roy</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Forensic Protocol: CHRONO-GAP-11</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Scan metadata for temporal inconsistencies. If an entry timestamp precedes the event it discusses, trigger immediate 'Evidentiary Tampering' alert."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Gill -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Gill</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Watchdog Protocol: REG-WATCH-03</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"You are a Zero-Trust Compliance Monitor. Every drafted sentence must pass a multi-vector regulatory check against federal and local statutes."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Chip -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Chip</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Drafting Protocol: VOICE-DRAFT-06</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Emulate stylistic voice profile V-01. Do not use adjectives not previously approved in the master corpus. Absolute adherence to 'Concise Prose' rules."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Beth -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-error/20">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<span class="px-2 py-1 rounded bg-error-container/20 text-error text-[10px] font-bold uppercase tracking-widest">Active Gate</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Beth</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Citation Auditor: ZERO-HAL-MAX</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-error/10">
+<p class="text-[11px] font-bold text-error uppercase tracking-widest mb-2">System Mandate</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Final gatekeeper. If a single citation is invalid, halt the entire workflow immediately. No exceptions. No hallucinations allowed. Verify via live legislative web-hooks."</p>
+</div>
+</div>
+</div>
+<!-- Agent: Dora -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container/50 text-outline text-[10px] font-bold uppercase tracking-widest">Standing By</span>
+</div>
+<h2 class="text-xl font-headline font-bold text-on-surface mb-1">Dora</h2>
+<p class="text-primary font-semibold text-xs mb-3 uppercase tracking-tighter">Archive Protocol: HIST-SYNC-05</p>
+<div class="mb-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Core Instruction</p>
+<p class="text-xs protocol-text text-on-tertiary-container line-clamp-3">"Maintain real-time synchronization with legislative archives. Flag any session law updates that impact current active citations within 120 seco
